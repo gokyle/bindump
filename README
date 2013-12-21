@@ -1,0 +1,48 @@
+bindump: a utility for dumping binary files
+
+Usage
+	bindump [-bc] [-hex] files...
+	Options:
+                -b              dump a hexdump-style list, with
+                                two 8-byte space-separated sets
+                                with two spaces in between.
+		-c		dump a C or Go-style sequence of
+				bytes.
+		-hex		dump file to hex
+		files		a sequence of files, whose output
+				will be separated by an extra
+				newline.
+
+Example output:
+
+	./bindump -b testdata/test.bin:
+	testdata/test.bin:
+		a8 a1 30 c9 c8 71 64 20  fd 37 97 ff 40 07 f0 1c 
+		c1 f2 80 2e cd cd 3c bb  8a 77 d1 4d 18 0e 75 37 
+
+	./bindump -c testdata/test.bin:
+	testdata/test.bin:
+		0xa8, 0xa1, 0x30, 0xc9, 0xc8, 0x71, 0x64, 0x20, 
+		0xfd, 0x37, 0x97, 0xff, 0x40, 0x07, 0xf0, 0x1c, 
+		0xc1, 0xf2, 0x80, 0x2e, 0xcd, 0xcd, 0x3c, 0xbb, 
+		0x8a, 0x77, 0xd1, 0x4d, 0x18, 0x0e, 0x75, 0x37, 
+
+	./bindump -hex testdata/test.bin:
+	testdata/test.bin:
+	a8a130c9c8716420fd3797ff4007f01cc1f2802ecdcd3cbb8a77d14d180e7537
+
+License:
+
+> Copyright (c) 2013 Kyle Isom <kyle@tyrfingr.is>
+> 
+> Permission to use, copy, modify, and distribute this software for any
+> purpose with or without fee is hereby granted, provided that the above 
+> copyright notice and this permission notice appear in all copies.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+> WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+> MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+> ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+> WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+> ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+> OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. 
